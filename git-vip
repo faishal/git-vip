@@ -9,17 +9,6 @@ version() {
     echo "git vip plugin v0.0.1-dev"
     echo
 }
-clone(){
-	git svn clone -r HEAD $1;
-	cd $2;
-	git checkout -b svn
-	git branch -D master
-	git svn rebase
-	git remote add origin $3
-	git fetch --all
-	git checkout -b master origin/master
-
-}
 main() {
     if [ "$#" -lt 1 ]; then
         usage; exit 1
@@ -37,11 +26,11 @@ main() {
     esac
 
     local workingdir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
-    if [ ! -e "$workingdir/git-adamcodes-$subcommand" ]; then
+    if [ ! -e "$workingdir/git-vip-$subcommand" ]; then
         usage; exit 1
     fi
 
-    source "$workingdir/git-adamcodes-$subcommand"
+    source "$workingdir/git-vip-$subcommand"
 
     if [ ! type "cmd_$subcommand" ]; then
         usage; exit 1

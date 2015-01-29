@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+usage() {
+    echo "usage: git vip clone [vip-svn-url]"
+    echo
+}
+cmd_clone() {
+	git svn clone -r HEAD $1;
+	cd $2;
+	git checkout -b svn
+	git branch -D master
+	git svn rebase
+	git remote add origin $3
+	git fetch --all
+	git checkout -b master origin/master
+}
