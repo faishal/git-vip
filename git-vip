@@ -3,6 +3,7 @@ usage() {
     echo "usage: git vip <subcommand>"
     echo
     echo "Available subcommands are:"
+    echo "      git vip sync"
 }
 
 version() {
@@ -32,7 +33,7 @@ main() {
 
     source "$workingdir/git-vip-$subcommand"
 
-    if [ ! type "cmd_$subcommand" ]; then
+    if [ ! type -t "cmd_$subcommand" ]; then
         usage; exit 1
     fi
 

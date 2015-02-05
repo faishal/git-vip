@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+usage() {
+    echo "usage: git vip sync"
+    echo
+}
+cmd_sync() {
+	#@to-do check for svn branch 
+	git checkout svn
+	git svn rebase
+	#@to-do check for master branch 
+	git checkout master
+	git pull origin master
+	git merge svn
+	echo "run git push origin master to push changes"
+}

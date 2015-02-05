@@ -1,6 +1,7 @@
 BIN_DIR   = /usr/local/bin
 LOADER    = git-vip
 COMMANDS  = git-vip-clone
+COMMANDS += git-vip-sync
 
 all:
 	@echo "usage: make [install|uninstall]"
